@@ -26,8 +26,8 @@ public class HorarioMateria {
 	private int weekDay;
 	
 	@Column(name="fromm")
-	private String from;
+	private int from;
 	
 	@Column(name="too")
-	private String to;
+	private int to;
 }

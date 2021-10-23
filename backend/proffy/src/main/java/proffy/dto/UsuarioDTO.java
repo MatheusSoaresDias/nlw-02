@@ -5,8 +5,6 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import proffy.model.Conexao;
-import proffy.model.Materia;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +14,6 @@ public class UsuarioDTO {
 	private String avatar;
 	private String whatsapp;
 	private String bio;
-	private List<Materia> materia;
-	private List<Conexao> conexao;
+	private List<MateriaDTO> materiaDto;
+	private List<ConexaoDTO> conexaoDto;
 }

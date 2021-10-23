@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import proffy.model.Materia;
+import proffy.dto.MateriaDTO;
 import proffy.service.MateriaService;
 
 @Controller
@@ -17,7 +17,7 @@ public class MateriaController {
 	public MateriaService materiaService;
 	
 	@PostMapping("/classes")
-	public @ResponseStatus(value = HttpStatus.CREATED) void create(@RequestBody Materia materia) {
-		materiaService.create(materia);
+	public @ResponseStatus(value = HttpStatus.CREATED) void create(@RequestBody MateriaDTO materiaDto) {
+		materiaService.create(materiaDto);
 	}
 }
