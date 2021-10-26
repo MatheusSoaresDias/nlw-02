@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import proffy.dto.HorarioMateriaDTO;
@@ -28,15 +29,34 @@ public class MateriaServiceImpl implements MateriaService {
 	@Autowired
 	public HorarioMateriaRepository horarioMateriaRepository;
 	
-	public void create(MateriaDTO type) {
-		Materia materia = mapper(type);
-		usuarioRepository.save(materia.getUsuario());
-		
-		for(HorarioMateria horarioMateria : materia.getHorarioMateria()) {
-			horarioMateriaRepository.save(horarioMateria);
+	public ResponseEntity<?> create(MateriaDTO type) {
+		try {
+			Materia materia = mapper(type);
+
+			usuarioRepository.save(materia.getUsuario());
+			
+			for(HorarioMateria horarioMateria : materia.getHorarioMateria()) {
+				horarioMateriaRepository.save(horarioMateria);
+			}
+			
+			materiaRepository.save(materia);
+			
+			return ResponseEntity.ok().body(materia);
+		} catch(Exception e) {
+			return ResponseEntity.badRequest().body("Já existe um usuário com este nome ou whatsapp.");
 		}
 		
-		materiaRepository.save(materia);
+	}
+	
+	public ResponseEntity<?> index(String subject, int weekDay, String time) {
+		try {
+			int minutes = makeFromAndTo(time);
+			List<Materia> materias = materiaRepository.findWithQueries(subject, weekDay, minutes);
+			return ResponseEntity.ok().body(materias);
+		} catch (Exception e) {
+			System.out.println(e);
+			return ResponseEntity.badRequest().body("Está faltando filtros para pesquisar matérias!");
+		}
 	}
 	
 	private Materia mapper(MateriaDTO type) {

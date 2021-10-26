@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,8 +37,7 @@ public class Materia {
 	@ManyToOne
 	private Usuario usuario;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "horario_id", referencedColumnName = "id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
 	private List<HorarioMateria> horarioMateria;
 	
 }

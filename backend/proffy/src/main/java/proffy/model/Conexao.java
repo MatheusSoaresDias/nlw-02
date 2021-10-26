@@ -26,9 +26,9 @@ public class Conexao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@ManyToOne
-	private Usuario usuario;
-	
+	@ManyToOne 
+	private Usuario usuarioConn;
+	 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
 }
