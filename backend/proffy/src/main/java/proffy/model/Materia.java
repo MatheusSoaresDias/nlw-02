@@ -39,5 +39,4 @@ public class Materia {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
 	private List<HorarioMateria> horarioMateria;
-	
 }

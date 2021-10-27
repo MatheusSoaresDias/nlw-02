@@ -1,7 +1,5 @@
 package proffy.service.impl;
 
-
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,6 +28,14 @@ public class ConexaoServiceImpl implements ConexaoService {
 			
 			return ResponseEntity.ok().body(conexaoRepository.save(conexao)); 
 		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Bad request.");
+		}
+	}
+	
+	public ResponseEntity<?> index() {
+		try {
+			return ResponseEntity.ok().body(conexaoRepository.findAll());
+		} catch (Exception e) {			
 			return ResponseEntity.badRequest().body("Bad request.");
 		}
 	}

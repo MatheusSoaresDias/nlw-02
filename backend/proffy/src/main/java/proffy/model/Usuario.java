@@ -35,12 +35,4 @@ public class Usuario {
 	
 	@Column(name = "bio")
 	private String bio;
-	
-	/*
-	 * @OneToMany(mappedBy = "usuario") private List<Materia> materia;
-	 */
-	
-	/*
-	 * @OneToMany(mappedBy = "usuarioConn") private List<Conexao> conexao;
-	 */
 }

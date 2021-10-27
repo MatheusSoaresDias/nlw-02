@@ -6,4 +6,6 @@ public interface ConexaoService {
 
 	public ResponseEntity<?> create(Long id);
 
+	public ResponseEntity<?> index();
+
 }
